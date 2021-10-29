@@ -109,6 +109,7 @@ type clientMessage struct {
 	Dest             string                   `json:"dest,omitempty"`
 	Username         string                   `json:"username,omitempty"`
 	Password         string                   `json:"password,omitempty"`
+	Token            string                   `json:"token,omitempty"`
 	Privileged       bool                     `json:"privileged,omitempty"`
 	Permissions      *group.ClientPermissions `json:"permissions,omitempty"`
 	Status           interface{}              `json:"status,omitempty"`
@@ -1319,6 +1320,7 @@ func handleClientMessage(c *webClient, m clientMessage) error {
 			group.ClientCredentials{
 				Username: m.Username,
 				Password: m.Password,
+				Token:    m.Token,
 			},
 		)
 		if err != nil {
